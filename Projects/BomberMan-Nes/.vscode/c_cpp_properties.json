@@ -4,7 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "c:/tcc/include/**"
+                "D:/Mes projet GitHub/include/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -14,7 +14,7 @@
                 "PLATFORM_DESKTOP"
             ],
             "windowsSdkVersion": "10.0.17134.0",
-            "compilerPath": "c:/tcc/tcc.exe",
+            "compilerPath": "D:/Mes projet GitHub/tcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++14",
             "intelliSenseMode": "msvc-x64"

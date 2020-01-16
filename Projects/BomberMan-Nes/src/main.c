@@ -1,15 +1,6 @@
-/*******************************************************************************************
-*
-*   raylib [core] example - basic window
-*
-*   This example has been created using raylib 1.0 (www.raylib.com)
-*   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
-*
-*   Copyright (c) 2013-2016 Ramon Santamaria (@raysan5)
-*
-********************************************************************************************/
 
-#include "raylib.h"
+
+#include <raylib.h>
 
 int main()
 {
@@ -18,7 +9,7 @@ int main()
     int screenWidth = 800;
     int screenHeight = 450;
 
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+    InitWindow(screenWidth, screenHeight, "BomberMan");
     
     SetTargetFPS(60);
     //--------------------------------------------------------------------------------------
@@ -35,9 +26,8 @@ int main()
         //----------------------------------------------------------------------------------
         BeginDrawing();
 
-            ClearBackground(RAYWHITE);
-
-            DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+        ClearBackground(WHITE) ;
+        DrawRectangle(50,50,200,100,BLACK);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
