@@ -6,7 +6,7 @@
         {
             "label": "(WIN) build release",
             "type": "shell",
-            "command": "d:/Mes-projet-GitHub/make.exe",
+            "command": "D:/Mes-projet-GitHub/BomBerMan-Nes/make.exe",
             "args": [
                 "PROJECT_NAME=BomberMan"
             ],
@@ -18,7 +18,7 @@
         {
             "label": "(WIN) build debug",
             "type": "shell",
-            "command": "d:/Mes-projet-GitHub/make.exe",
+            "command": "D:/Mes-projet-GitHub/BomBerMan-Nes/make.exe",
             "args": [
                 "PROJECT_NAME=BomberMan-Debug-Version",
                 "DEBUGGING=TRUE"
