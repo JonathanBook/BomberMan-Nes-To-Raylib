@@ -3,28 +3,7 @@
 #include <stdio.h>
 #include <raymath.h>
 //VARIABLE
-typedef  struct TileExplos
-{
-    Vector2 Position;
-    int ImgExplo;
-    BoxCol Box ;
-}TileExplos;
 
-typedef struct Explosion
-{
-    float Timer;
-    bool isActive;
-    TileExplos ListeTile[5][5];
-    
-}Explosion;
-
-
-
-typedef struct Bomb
-{
-    GameObject Objet ;
-    float Timer ;
-}Bomb;
 
 Bomb ListeBomb[10]={0};
 Explosion ListeExplosion[10] ={0};
@@ -35,6 +14,7 @@ void InitBomb( Vector2 Position, GameObject *Acteur) ;
 void InitAnimationBomb(GameObject *B);
 void GenerateExplosion( Vector2 Position);
 void GenerateWallDestroy( Vector2 *Position);
+bool GetColEnemy(BoxCol *T) ;
 
 int *liste ;
 int contWall = 20 ;
@@ -78,9 +58,8 @@ void InitBomb(Vector2 Position,GameObject *Acteur)
     Acteur->Animation.MaxFrame = 3 ;
     Acteur->BoxCollision.h = TILEH;
     Acteur->BoxCollision.w = TILEW;
-    Acteur->BoxCollision.x = Acteur->Position.x;
-    Acteur->BoxCollision.y = Acteur->Position.y;
-    
+    Acteur->BoxCollision.x = Position.x;
+    Acteur->BoxCollision.y = Position.y;
 }
 
 void InitAnimationBomb(GameObject *B)
@@ -127,6 +106,11 @@ void GenerateExplosion( Vector2 Position)
                     
                     if( CheckCollision( &Player , &ListeExplosion[i].ListeTile[D][L].Box ) )
                     { SetPlayerDead();}
+                    
+                    if(GetColEnemy(&ListeExplosion[i].ListeTile[D][L].Box)){
+
+                        printf("ENEMY DEAD \n");
+                    }
 
                     int Tile = GetTile(NewDirection);
 
@@ -190,6 +174,8 @@ void GenerateWallDestroy( Vector2 *Position)
             ListeWallDestroy[i].Animation.CurentFrame =0 ;
             ListeWallDestroy[i].Animation.NumeroAnimation =0;
             ListeWallDestroy[i].Animation.MaxFrame = 5 ;
+      
+
             if(contWall >30){contWall = 20;}    
             
             liste[contWall] = &ListeWallDestroy[i];
@@ -273,4 +259,29 @@ void DrawExplosion(Texture2D tilset ,Rectangle ListeRectangle[])
         }   
     }
     
+}
+
+Bomb *GetListeBomb()
+{
+    return ListeBomb ;
+}
+
+bool GetColEnemy(BoxCol *T)
+{
+    Enemy *liste = GetEnemyListe();
+
+    for(int i=0;i<10;i++)
+    {
+        Enemy E = liste[i];
+        if(E.Object.isActive)
+        {
+            if(CheckCollision(&E.Object.BoxCollision ,T)){
+                SetDeadEnemy(i);
+                return true ;
+            }
+        }
+
+        
+    }
+    return false;
 }

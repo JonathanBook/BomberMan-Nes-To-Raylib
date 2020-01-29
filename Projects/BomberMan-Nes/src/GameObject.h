@@ -36,5 +36,41 @@ typedef struct GameObject
    
 
 }GameObject;
-;
+
+typedef struct Enemy
+{
+    GameObject Object;
+    Vector2 Direction ;
+    bool isDead ;
+    enum state{
+        MOVE,
+        CHECK,
+        CHOIX
+    }State;
+
+}Enemy;
+
+typedef  struct TileExplos
+{
+    Vector2 Position;
+    int ImgExplo;
+    BoxCol Box ;
+}TileExplos;
+
+typedef struct Explosion
+{
+    float Timer;
+    bool isActive;
+    TileExplos ListeTile[5][5];
+    
+}Explosion;
+
+
+
+typedef struct Bomb
+{
+    GameObject Objet ;
+    float Timer ;
+}Bomb;
+
 void DrawGameObject(Texture2D tilset ,Rectangle ListeRectangle[],GameObject*liste[]);

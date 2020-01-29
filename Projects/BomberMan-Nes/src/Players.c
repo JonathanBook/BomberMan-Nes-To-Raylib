@@ -18,7 +18,7 @@ struct GameObject Player ;
 
 void Init(GameObject *Acteur,GameObject *liste[],Vector2 Spawn);
 void InitAnimationPlayer();
-void UpdateBoxCol();
+
 
 void InitPlayers(GameObject *liste[],Vector2 Spawn)
 {  
@@ -94,20 +94,24 @@ void InputPlayer()
         if (IsKeyDown(KEY_W) ||IsGamepadButtonDown(GAMEPAD_PLAYER1 , GAMEPAD_BUTTON_LEFT_FACE_UP)) //UP
         {
         MovActeur(UP,&Player) ;
+            AppliqueAnimation(ANIMATIONUP,3,&Player);
         } 
         else if (IsKeyDown(KEY_D)||IsGamepadButtonDown(GAMEPAD_PLAYER1 , GAMEPAD_BUTTON_LEFT_FACE_RIGHT))//RIGHT
         {
             Player.Flip = true ;
             MovActeur(RIGHT,&Player) ;
+             AppliqueAnimation(ANIMATIONLEFT,3,&Player);
         }
         else if (IsKeyDown(KEY_A)||IsGamepadButtonDown(GAMEPAD_PLAYER1 , GAMEPAD_BUTTON_LEFT_FACE_LEFT))//LEFT
         {
             Player.Flip = false ;
             MovActeur(LEFT,&Player) ;
+             AppliqueAnimation(ANIMATIONLEFT,3,&Player);
         }
         else if (IsKeyDown(KEY_S)||IsGamepadButtonDown(GAMEPAD_PLAYER1 , GAMEPAD_BUTTON_LEFT_FACE_DOWN))//DOWN
         {
-            MovActeur(DOWN,&Player) ;   
+            MovActeur(DOWN,&Player) ; 
+             AppliqueAnimation(ANIMATIONDOWN,3,&Player);  
         }
         else
         {
@@ -120,7 +124,7 @@ void InputPlayer()
             DelayTouche = 1 ;
         }
     
-        UpdateBoxCol();
+ 
     } else 
     {
        
@@ -131,14 +135,11 @@ void InputPlayer()
             Player.Animation.CurentFrame =0;
         }
     }
-       
+     
+        
 }
 
-void UpdateBoxCol()
-{
-    Player.BoxCollision.x = Player.Position.x ;
-    Player.BoxCollision.y = Player.Position.y ;
-}
+
 
 Vector2 GetPlayerPosition()
 {

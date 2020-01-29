@@ -83,6 +83,7 @@ int main()
             InputPlayer();
             CameraLimiteScheck(&camera);
             BombsUpdate();
+            updateInfoEnemy();
             
         }else if(Scene.CurentScene == Menu)
         {
@@ -208,18 +209,18 @@ void CameraLimiteScheck(Camera2D *camera)
     {
         camera->target.x = 180;
     }
-    if(camera->target.x >380)
+    if(camera->target.x >600)
     {
-        camera->target.x = 380;
+        camera->target.x = 600;
     }
     if(camera->target.y <107)
     {
         camera->target.y = 107; 
     }
         
-    if(camera->target.y >180)
+    if(camera->target.y >320)
     {
-        camera->target.y = 180 ; 
+        camera->target.y = 320 ; 
     }
                     
 }

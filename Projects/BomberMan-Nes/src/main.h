@@ -57,13 +57,20 @@ BoxCol GetBoxColPlayer ();
 void InputPlayer();
 void SetPlayerDead();
 
+//Enemy.c
+void updateInfoEnemy() ;
+void AddEnemy(GameObject *liste[],Vector2 Spawn);
+Enemy *GetEnemyListe() ;
+void  SetDeadEnemy(int NumeroEnemy);
+
 //Mov.c
-void MovActeur(Vector2 Direction , GameObject *Acteur);
+bool MovActeur(Vector2 Direction , GameObject *Acteur);
 
 //Bomb.c
 void InstantiateBomb(Vector2 Position);
 void DrawExplosion(Texture2D tilset ,Rectangle ListeRectangle[]);
 void BombsUpdate();
+Bomb *GetListeBomb();
 
 //Animation.c
 void AppliqueAnimation(int NumeroAnimation , int MaxFrame, GameObject *Acteur);
