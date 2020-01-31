@@ -119,13 +119,13 @@ void InputPlayer()
             MovActeur(Vector2Zero,&Player) ;
         }
     
-        if(IsKeyReleased(KEY_SPACE) && DelayTouche ==0){
+        if(IsKeyReleased(KEY_SPACE) && DelayTouche ==0 ||IsGamepadButtonDown(GAMEPAD_PLAYER1 , GAMEPAD_BUTTON_RIGHT_FACE_DOWN )){
             InstantiateBomb(Player.Position) ;
             DelayTouche = 1 ;
         }
     
  
-    } else 
+    } else if(Isdead)
     {
        
 
@@ -133,6 +133,9 @@ void InputPlayer()
         {
             Player.Animation.Pause = true;
             Player.Animation.CurentFrame =0;
+            
+            InitGamePlay();
+            LoadScene(StageInfo,&CurentScene);
         }
     }
      
@@ -140,6 +143,11 @@ void InputPlayer()
 }
 
 
+void rezetPlayer()
+{
+    Player.isActive = false ;
+    Isdead = false;
+}
 
 Vector2 GetPlayerPosition()
 {
@@ -152,7 +160,7 @@ Vector2 GetPlayerPosition()
 
 void SetPlayerDead()
 {
-    Player.Velocity = Vector2Zero;
-    Isdead = true;
-    AppliqueAnimation(ANIMATIONDEAD,7,&Player);
+    //Player.Velocity = Vector2Zero;
+   // Isdead = true;
+    //(ANIMATIONDEAD,7,&Player);
 }

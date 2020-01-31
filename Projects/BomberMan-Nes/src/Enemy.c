@@ -18,7 +18,7 @@ bool Vector2Compare(Vector2 a ,Vector2 b)
 
 int ContEnemy = 30 ;
 //VARIABLES
-static Enemy ListeEnemy[10]={0};
+ Enemy ListeEnemy[10]={0};
 
 void AddEnemy(GameObject *liste[],Vector2 Spawn)
 {
@@ -78,6 +78,8 @@ void updateInfoEnemy()
                 if(Acteur->Object.Animation.CurentFrame >= Acteur->Object.Animation.MaxFrame-1)
                 {
                     Acteur->Object.isActive = false ;
+                    SetScoreToScreen("400",ListeEnemy[i].Object.Position,1);
+                    SetScore(400) ;
                 }
             }
             else
@@ -255,4 +257,17 @@ void SetDeadEnemy(int NumeroEnemy)
     Enemy *E = &ListeEnemy[NumeroEnemy] ;
     AppliqueAnimation(1,4,E);
     E->isDead= true ;
+    
+}
+
+void RezetEnemy()
+{
+    ContEnemy = 30;
+    for(int i=0;i<10;i++)
+    {
+         ListeEnemy[i].Object.isActive = false ;
+         ListeEnemy[i].isDead = false;
+
+    }
+   
 }

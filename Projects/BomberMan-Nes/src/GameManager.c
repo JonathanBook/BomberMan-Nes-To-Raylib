@@ -5,23 +5,29 @@ void RezetScore();
 bool isPause = false;
 
 //Score
-int TotalScore ;
+int TotalScore = 0 ;
 int BestScore ;
-int CurentStage ;
+int CurentStage =0 ;
 int MaximumStage ;
+int Life = 3 ;
+int Timer = 200;
 
 
 
 void InitGamePlay()
 {
     RezetScore() ;
+    RezetEnemy();
+    rezetPlayer();
+    RezetTableGaleObject();
     InitMapExecute();
+   CurentStage =1;
 }
 
-int SetScore(int Points)
+void SetScore(int Points)
 {
-    TotalScore = Points;
-    return TotalScore ;
+    TotalScore += Points;
+   
 }
 
 int SetBestScore(int Points)
@@ -53,4 +59,28 @@ bool GamePlayPause()
 bool GetPause()
 {
     return isPause ;
+}
+int GetStage()
+{
+    return CurentStage ;
+}
+void SetStage(int Numero)
+{
+    CurentStage = Numero ;
+}
+int GetLife()
+{
+    return Life ;
+}
+void SetLife(int i)
+{
+    Life = i;
+}
+int GetTimer()
+{
+    return Timer ;
+}
+void SetTime(int i)
+{
+    Timer = i;
 }

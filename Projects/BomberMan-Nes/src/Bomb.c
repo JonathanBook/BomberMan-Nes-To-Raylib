@@ -16,7 +16,7 @@ void GenerateExplosion( Vector2 Position);
 void GenerateWallDestroy( Vector2 *Position);
 bool GetColEnemy(BoxCol *T) ;
 
-int *liste ;
+
 int contWall = 20 ;
 //LOGIQUE
 void InstantiateBomb( Vector2 Position)
@@ -30,7 +30,7 @@ void InstantiateBomb( Vector2 Position)
         {
             InitAnimationBomb(&ListeBomb[i].Objet) ;
             InitBomb(Position,&ListeBomb[i].Objet);
-            liste = GetTableObject();
+            int *liste = GetTableObject();
             liste[i+1] = &ListeBomb[i].Objet ;
             printf("New Bomb\n");
             
@@ -87,7 +87,7 @@ void GenerateExplosion( Vector2 Position)
                 if(D == 4 ){ Direction = DOWN ; }
 
 
-                for ( int L = 1; L < 5; L++)
+                for ( int L = 0; L < 2; L++)
                 {
                     //CalCul Direction
                    Vector2 NewDirection  = Vector2Add( Position ,
@@ -114,7 +114,7 @@ void GenerateExplosion( Vector2 Position)
 
                     int Tile = GetTile(NewDirection);
 
-                    if(Tile== WALL || Tile == WALLDESTROY || L == 4)
+                    if(Tile== WALL || Tile == WALLDESTROY || L == 1)
                     {
 
                         if(D==1){ListeExplosion[i].ListeTile[D][L].ImgExplo = 8; }//End Left
@@ -153,6 +153,7 @@ void GenerateExplosion( Vector2 Position)
 
 void GenerateWallDestroy( Vector2 *Position)
 {
+  
     for (int i = 0; i < 10; i++)
     {
         if(!ListeWallDestroy[i].isActive)
@@ -174,10 +175,10 @@ void GenerateWallDestroy( Vector2 *Position)
             ListeWallDestroy[i].Animation.CurentFrame =0 ;
             ListeWallDestroy[i].Animation.NumeroAnimation =0;
             ListeWallDestroy[i].Animation.MaxFrame = 5 ;
-      
+    
 
             if(contWall >30){contWall = 20;}    
-            
+            int *liste = GetTableObject();
             liste[contWall] = &ListeWallDestroy[i];
             contWall++;
             return;

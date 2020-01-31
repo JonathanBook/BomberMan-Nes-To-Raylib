@@ -65,7 +65,9 @@ typedef struct Explosion
     
 }Explosion;
 
-
+typedef struct String{
+  char string[50] ;
+}String;
 
 typedef struct Bomb
 {
@@ -73,4 +75,8 @@ typedef struct Bomb
     float Timer ;
 }Bomb;
 
+
+
 void DrawGameObject(Texture2D tilset ,Rectangle ListeRectangle[],GameObject*liste[]);
+void DrawHud() ;
+void SetScoreToScreen(char texte[] ,Vector2 P,float timer);
