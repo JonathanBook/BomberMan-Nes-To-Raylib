@@ -30,8 +30,8 @@ void InstantiateBomb( Vector2 Position)
         {
             InitAnimationBomb(&ListeBomb[i].Objet) ;
             InitBomb(Position,&ListeBomb[i].Objet);
-            int *liste = GetTableObject();
-            liste[i+1] = &ListeBomb[i].Objet ;
+           
+            GameObjectTable[i+1] = ListeBomb[i].Objet ;
             printf("New Bomb\n");
             
             return;
@@ -178,8 +178,8 @@ void GenerateWallDestroy( Vector2 *Position)
     
 
             if(contWall >30){contWall = 20;}    
-            int *liste = GetTableObject();
-            liste[contWall] = &ListeWallDestroy[i];
+  
+            GameObjectTable[contWall] = ListeWallDestroy[i];
             contWall++;
             return;
 

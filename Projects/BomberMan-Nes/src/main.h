@@ -97,7 +97,8 @@ bool CheckCollision(BoxCol *A , BoxCol *B);
  GameObject GameObjectTable[100];
 //main.c
 void InitMapExecute();
-GameObject *GetTableObject();
+
+
 Scene CurentScene;
 void RezetTableGaleObject();
 

@@ -189,8 +189,5 @@ void RezetTableGaleObject()
     }  
 }
 
-    GameObject GetTableObject()
-   {
-       return &GameObjectTable ;
-   }
+
 /*TableGameObject  0 = PLayer de 1 a 10 = bomb 10 a 20 = explosion 20 a 30 = wall destroy*/
